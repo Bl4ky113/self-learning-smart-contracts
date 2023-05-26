@@ -1,7 +1,6 @@
 # Smart Contracts. General
-
 Start: 05/22/2023
-End: 
+End: 05/25/2023
 
 Sessions:
 - 05/22/2023
@@ -22,14 +21,16 @@ all the stuff they have and general, such as:
 - Ethereum --- DONE
 - Ether --- DONE
 - Web2 and Web3 --- DONE
-- Accounts --- 
+- Accounts --- DONE
 - Transactions --- DONE
 - Blocks --- DONE
-- Ethereum Virtual Machine (EVM) --- 
-- Gas ---
-- Nodes and Clients ---
-- Networks --- 
-- Consensus Mechanisms --- 
+- Ethereum Virtual Machine (EVM) --- DONE
+
+Halted, If I want or need more research.
+- Gas
+- Nodes and Clients
+- Networks
+- Consensus Mechanisms
 
 So... Lets get reading first!
 
@@ -150,8 +151,135 @@ The blocks have this data:
     - deposits: list of the new deposits
     - voluntary_exits: list of validators exiting the network
     - sync_aggregate: subset of validators used to serve light clients
-    - execution_payload: transactions passed from the execution client, the ones that are going to be 
-      executed and then broadcasted, used for the next block parent_root.
+    - execution_payload: transactions passed from the execution client, the ones that are going to be executed and then broadcasted, used for the next block parent_root.
     - execution_payload_header: summary of the transactions verified in the block
 
+## Ethereum Virtual Machine
 
+The Ethereum Virutal Machine and the Ethereum protocol are just like the waves of the ocean.
+Only posible by the massive and great networking of a system that shares a common purpose.
+The purpose of Ethereum beeing to create a descentralized blockchain network.
+
+It could be interperted the Ethereum blockchain as a descentralized ledger. But since 
+Ethereum has and uses Smart Contracts, we could say that The Ethereum Blockchain Network is a 
+descentralized state machine. Which can holds accounts, balances and machine states, which can change from 
+block to block, depending on the code written on the machine, or smart contract.
+
+This big state of the Ethereum could be represented as a mathematical function.
+
+Y(S, T) = S'
+
+From a S: old_state given and a new batch of T: valid_transactions, 
+using the Ethereum State Function Y(), we get a S': new_state for the Ethereum Network.
+
+We can run a EVM using different executions clients made on the long run of the 9+ years of Ethereum,
+these have been made by the specifications on the Ethereum Yelllow Paper, some are:
+
+- Py-EVM: Python
+- evmone: C++
+- ethereumjs-vm: JavaScript
+- eEVM: C++
+
+I could start developing from here, but I could read a little more!
+Nah, time isn't infinite. Yet.
+
+## Smart Contract Languages
+
+The main two are:
+- Solidity
+    - C ++ Syntax based
+    - OOP oriented
+    - Inheritance from other contracts
+    - Libraries
+    - Complex user types
+    - Statically typed
+    - Strong Dev Community
+- Vyper
+    - Pythonic syntax
+    - Strong typed
+    - Small and understandable compiler code
+    - Efficient bytecode generation
+    - Doesn't support a lot of stuff, in order to make the smart contract more safe and easier to audit
+
+There's also Yul and its extension Yul+
+Which connects directly to the EVM. But it's more advanced.
+So... Later on.
+
+## Smart Contract Anatomy
+
+### Data
+
+The hard or soft coded data that our smart contract will use can define how efficient it will be 
+on the moment its compiled.
+
+We can store it on:
+- Storage: persistent, declarated data, the types varies on the language. Could be expensive
+- Memory: data only used when the smart contract is used. More cheaper
+- Env Variables: global general data from the blockchain state, itself or the transaction
+
+### Functions
+
+They are called and are what make or creates the funcitonality.
+They can be external, from another smart contract or from an account.
+Or internal, just like any other method of an object in OOP.
+
+There's also public and private functions, which restricts the type of call that could be 
+made for the function.
+
+Views functions are just Getters, which only return a value type and nothing more, only seeing.
+'Can't a straight man just see and watch what's available on Grinder?'
+
+Constructors are just the init of the Smart Contract. Set and define state variables. 
+Only when it's first deployed(?, and that's everytime it's called or what?
+
+Some have builtin functions, like:
+- send(address): send ether to an address.
+
+Writing the functions are just using the defined special word for the 
+language, and define it's:
+- name
+- paramters
+- parameter types
+- if external or internal
+- if pure, view, or playable
+- and return type, if any
+
+### Events and Logs
+
+Events could be triggerd and handled by your smart contract, and then write a log. 
+So later on a frontend application can read them.
+
+## Smart Contract Libraries 
+
+They are reusable behaviours for our smart contracts.
+They are generally called from the node_modules folder,
+carefull using a different version of the language that you are using 
+and the one of the library.
+
+## Smart Contract Testing
+
+Halted for later, since I haven't even developed my first hello world
+
+## Smart Contract Compiling
+
+Once we have our Smart contract done, the compiler will turn it into bytecode. 
+And create an Application Binary Interface. Which is a json that describes the deployed contract 
+and its functions. So it can be used by a js client library.
+Making it easier to bridge the gap between web 2 and web 3.
+
+## Smart Contract Deploy
+
+Now we need some:
+- gas money, ether
+- the smart contract bytecode
+- a deployment script or plugin
+- and access to a Ethereum Node, public or private.
+
+It doesn't specify how to, but there's some tutorials about it. 
+So... I'll have to check that later.
+
+But once uploaded, verified and validated, added and validaded on a block, and 
+that block added to the Ethereum Blockchain Network. The smart contract will be 
+available for any account in that Network.
+
+# Vyper
