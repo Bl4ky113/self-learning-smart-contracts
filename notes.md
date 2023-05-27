@@ -283,3 +283,117 @@ that block added to the Ethereum Blockchain Network. The smart contract will be
 available for any account in that Network.
 
 # Vyper
+
+Start: 02/25/2023
+End: 
+
+Sessions:
+- 05/25/2023
+- 05/26/2023
+- 05/27/2023
+
+The objective is to make a smart contract that has getters and setters for:
+- 4 different names --- init only
+- id --- init only
+- birth date --- init onlt
+- contact
+- direction
+- cellphone
+- city
+- email
+
+## Install 
+
+We can install the python library from pip, with it we can compile our .vy files in to 
+smart contracts.
+
+But them, we could only compile them to just byte code.
+Soo, I can't or I'm not willing to connect myself to ANY ethereum blockchain. Or any blockchain for that matter.
+
+So How do we Really, REALLY INSTALL THIS
+
+## THE REAL INSTALL
+
+So now, we have the library, great. We are going to need a list of stuff first.
+
+- Python 3.9
+We can install it just from a normal place, carefull with the version. IT WILL NOT WORK IF YOU ARE NOT USING 3.9!
+If you already have installed python in your PC. You can use pyenv to install it, which.
+
+- Pyenv and Pyenv-virtualenv
+Pyenv will just let us install and exec a different python version for our projects, but it wont 
+separate them, making a hell for installing dependencies, which we need to do.
+So we are going to use pyenv-virtualenv as well.
+
+These two need to add some eval in your .bashrc, otherwise. IT WILL NOT WORK.
+
+Then you just create a venv from pyenv virutalenv, and use it just like a normal venv, just that you are 
+going to activate by using:
+
+$ pyenv activate venv
+
+Now we should have Python 3.9
+
+- Vyper, eth-Brownie
+Now we only install Vyper, right? NO.
+Vyper will let us compile our files, but not use them.
+So we can use a testing library of Ethereum smart contracts like eth-brownie.
+Which is the one who required Python 3.9 by the way...
+
+After installing it, we create an empty folder and run 
+
+$ brownie init
+
+Which will create empty folders for our .vy, .py scripts and some stuff like dependencies and such things.
+
+But wait, eth-brownie just runs the tests. So where are we going to do the transaction of the smart contract?
+That where ganache enters.
+
+- Ganache
+Ganache promotes itself as an One Click Blockchain, ment por personal propourses such as testing and developing for 
+the Ethereum Blockchain.
+
+You can download it from the AUR, its ganache-cli. Or Idk, I probably wont use any other OS than Arch.
+Or even compile my own packages. But there's support for windows, mac and who knows what.
+
+Then, we could just run the tests. But that's all, only tests... They are good, by passing some parameters we can 
+see how much gas fees does a contract or something required, I don't remember pretty well.
+
+So, we need more context, since the only context that we are given on the tests are only then an error ocurrs.
+
+Needing...
+
+- pytest
+eth-brownie implements pytest for running it's tests. So we can create an config file for this 
+on anywhere on the project folder called pytest.ini
+
+Where we can define if we can show logs to the cli and which levels: beeing
+1. NOTSET - 0
+2. DEBUG - 10
+3. INFO - 20
+4. WARNING - 30
+5. ERROR - 40
+6. FATAL - 50
+
+Then, in the test case. We import logging and set in the basicConfig the level of the logging aswell
+And in each test case where we need to log, we can create a log variable which is going to be 
+the logger of the test. So if we are running multiple tests we can differeciante them with timestamps and 
+file paths.
+
+Then call the level of the log level selected, and pass a msg. Preferably an f"string", because it doesn't have an
+infinite num of parameters* like print.
+
+AND THAT'S IT.
+Now you can develop Vyper Smart Contracts from your own machine without any connection to the internet. 
+Look without network capabilities, and music.
+
+SO a list of what you need to install
+
+- Pyenv
+    - Pacman/extra
+- Pyenv-virtualenv, ganache-cli
+    - Pacman/AUR
+- Python 3.9
+    - Pyenv
+- Vyper eth-brownie, pytest
+    - pip
