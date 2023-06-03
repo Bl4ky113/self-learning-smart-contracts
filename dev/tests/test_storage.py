@@ -2,7 +2,7 @@ import pytest
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 INITIAL_VALUE = 4
 

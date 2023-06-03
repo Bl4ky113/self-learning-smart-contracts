@@ -395,5 +395,5 @@ SO a list of what you need to install
     - Pacman/AUR
 - Python 3.9
     - Pyenv
-- Vyper eth-brownie, pytest
+- Vyper, eth-brownie, pytest
     - pip
