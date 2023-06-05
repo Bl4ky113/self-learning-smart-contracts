@@ -284,8 +284,8 @@ available for any account in that Network.
 
 # Vyper
 
-Start: 02/25/2023
-End: 
+Start: 05/25/2023
+End: 06/04/2023
 
 Sessions:
 - 05/25/2023
@@ -459,3 +459,68 @@ I'll research how to connect it to another local networks such as tesera types o
 And not use the network of ganache.
 
 Also see if I can run Solidity with Brownie, which is the most likely.
+
+## Vyper 
+
+This is the only things that I've learnt about Vyper, since I don't want to 
+leave it all just in the air, since I 'MUSN'T' learn Vyper but the bloated solidity
+
+The most important thing to understand how to program with Vyper is, 
+All* of Python Synxtax works in Vyper. But Vyper Syntax doesn't works in Python
+
+With this out of the way, Almost everything in Vyper is Mostly behaviour and usage changes from
+Python. I don't know with which version of Python is Vyper completly compliant, but meh.
+
+The most important changes are:
+
+### Version usage of Vyper
+
+We HAVE to declare which version of Vyper are we going to use using an npm version type.
+
+### Self context
+
+The hole Vyper file and contract refers it self with the self variable. The biggest change is 
+that the whole file is inside a Python Class.
+
+From there everything looks and 'feels' more like a Pythonic way to do everything.
+
+### Private By Default
+
+Most of the Variables, it doesn't matter if they are temporal or real storage. 
+are going to be private by default, to change it, we need to pass the variable type for 
+the public function
+
+For the methods of the smart contract we are going to add decorators for each type.
+And functionality
+
+### Interfaces
+
+I don't know what are they exactly, I haven't studied them. But if I had to bet, They would be the 
+Class equivalence of Python
+
+### Special Global and Local Variables
+
+These are variables available for free* (without gas usage) in the smart contract, 
+such as the msg obj. Which is the general data of the wallet that called the smart contract.
+
+And other data which isn't trully important such as data of the network, block of deployment and other stuff.
+
+### Data Types: Simple
+
+They use more real types of data, unlike python, such as uint2^power, string[limit], bool, address which is a 
+Signed 0x something bin data.
+
+And other types like decimals, and stuff. Generally the general types of low level typed languages
+
+### Data Types: Complex
+
+There's Structs which are a way to create a Model, Interface, Class, Or Data of an object. 
+It behaves like a JavaScript Object, it's declared like a Python class with only parameters and nothing else.
+
+
+
+Now With all of this, Vyper is Gone for Good (?) // Citacion Needed
+
+:c
+
+
