@@ -291,6 +291,9 @@ Sessions:
 - 05/25/2023
 - 05/26/2023
 - 05/27/2023
+- 06/02/2023
+- 06/03/2023
+- 06/04/2023 Happy Birth Day MOM!
 
 The objective is to make a smart contract that has getters and setters for:
 - 4 different names --- init only
@@ -397,3 +400,62 @@ SO a list of what you need to install
     - Pyenv
 - Vyper, eth-brownie, pytest
     - pip
+
+## The after Math
+
+Now, we could develop in Vyper. 
+It technically has the same structur as any smart contact.
+But it's getting extreamly hard to develop this thing
+and keep up with my team demands, soo... I'll have to ditch 
+Vyper for Solidity, since the begining it was only a try, test and lab stuff
+
+That also goes for Yul and Yul+ in Ethereum. 
+Beaker and Teal could wait a little more, but eventualy would end in the 
+same part...
+
+So, lets write down everything that I know!
+
+## Usage of Brownie
+
+Brownie is a testing lib, ok.
+
+From there we can run and develop smart contracts locally. Using it
+my main use was for vyper, but I think that it could also be used for Solidity.
+
+Anyway, the main usage are tests. And develop the smart contracts using 
+Test driven Development. 
+
+First we need to initilize brownie, the only thing that it does is create a system of 
+folders where it stores the libs, smart contracts, tests files, and more.
+It need to be a clear and empty folder, otherwise it'll bitch about it.
+
+In order to run a smart contract, we just have to drop it in the contracts folder. 
+Then in the tests folder we will need to create a pytest file.
+
+We import pytest, and logging for logging, duh.
+
+We will get the smart contract and its functions by creating a function with 
+@pytest.fixture decorator, and passing in the First parameter the fileName of the 
+smart contract in ./contracts/ It is case sensitive, btw.
+We should pass another parameter called accounts, which will be a list of generated accounts in the test network.
+It will start the contract, passing the init or constructor data by using the method deploy of the smart contract
+parameter, it also has a dict for options such as 'from', which declares who is using, or in this case initliazing, the 
+smart contract passing one of the accounts in the list accounts.
+Then it will yield the return of deploy, for later usage in the tests.
+
+For each test, it will be a function, for simple unit tests.
+It will need to start with 'test_' and then a proper name for the test, otherwise
+pytest will not detect it and won't execute it.
+
+In the unit tests we can call the smart contract by calling the function with the @pytest.fixture decorator, and 
+yielding the return of the deploy of the smart contract, it will let us use the same instance of smart contract with 
+each test(?) Not that sure, but heck. If anything, just make a normal function and divide the tests in modules if you need to 
+do a sequencial type of test, first this, then that, then ... You get it.
+
+That's the basic usage of Brownie,
+If I need to. Or want to.
+
+I'll research how to connect it to another local networks such as tesera types or besu.
+And not use the network of ganache.
+
+Also see if I can run Solidity with Brownie, which is the most likely.
