@@ -523,4 +523,125 @@ Now With all of this, Vyper is Gone for Good (?) // Citacion Needed
 
 :c
 
+# Solidity
+
+Start: 06/05/2023
+End:
+
+Sessions: 
+- 06/05/2023
+
+Yeah, I know...
+
+## Install
+
+You know, it doesn't work locally. It doesn't work. PERIOD.
+
+There's available a coc-solidity for nvim, that's nice.
+
+So... There's a bin and program for compiling solidity contracts, 
+in the aur, there's the bin, git version and compile.
+I went with the bin obviously.
+
+### Brownie Comeback
+
+also Brownie works with solidity >=0.4.22. Nice
+and looks like I don't have to do a lot of stuff in order to run it, 
+just create another working folder.
+
+There's a bunch of special configuration for solidity. 
+Mainly in the compiler config file, in the file ./brownie-config.yaml
+
+There's a lot of options but the ones that matter are in 
+
+compiler:
+    evm_version: null
+    solc:
+        version: null
+        optimizer:
+            enabled: true
+            runs: 200
+        remappings: null
+
+Where we can define the versions of the sol compiler and EVM
+configure the optimizer and even make remappings for our dependencies.
+
+There's also some options for the optimizer, but I don't think that I'm going
+there yet.
+
+There's a functionality for using and running scripts from the brownie console, but I don't care about it.
+
+But, you only have to
+
+$ brownie run 'script' \[function\]
+
+Also there's an way to use accounts, Tokens and other stuff from the main file, 
+just by importing them from brownie
+
+from brownie import Token, accounts
+
+From there, it's just like we've learnt.
+
+### Brownie Packet Manager
+
+Since Solidity accepts imports and stuff, we can 
+use the packet manager of Brownie to install libraries.
+
+It supports libraries from ethPM and Github.
+
+we have to:
+
+$ brownie pm install ORG/REPOSITORY@VERSION
+
+if we want to download from ethPM 
+
+$ brownie pm install ethpm://CONTRACT:CHAIN_ID/PACKAGE@VERSION
+
+Then we can list the packets with:
+
+$ brownie pm list
+
+And if we want to clone one package in order to see and use it from 
+a custom folder, or the current one, we can do it with:
+
+$ brownie pm clone PACKAGE
+
+In order to use them in our contracts, we use the import function, 
+passing the ORG, / package, @version, and then the path to the file 
+of the library which we are going to use.
+Just like the install the first part.
+
+For using them in the tests. We can pass the pm parameter to the test function and then 
+pass the string of the org, package, version and then access the files like an object.
+
+If we are going to share our testing suit we should declare the libraries installed in our config file
+like a list in dependencies.
+
+Then, before compiling a project, Brownie will install its dependencies.
+
+### Brownie GUI
+There's a GUI. Cringe
+
+### Brownie Core: Accounts
+
+These are local accounts made inside ganache. 
+
+We can see it's methods and attributes by using dir(). But they have:
+- address
+- balance
+- estimate_gas()
+- deploy()
+- transfer()
+
+which transfer is the one we should use the most, by passing another account address, and then
+a string with a amount of wei to send.
+
+The balance is in Weis.
+
+If we need to create another account, we use the method add of accounts. 
+If we want to, we can pass a custom private key.
+
+And we can force creating accounts with a custom address by using the method at() and passing the 
+kwarg force=True
+
 
